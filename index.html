@@ -1,1 +1,1997 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Team Abstimmung</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #020202;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   PREMIUM BACKGROUND
+========================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,.09),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(120,120,120,.07),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255,255,255,.05),
+            transparent 35%
+        ),
+        #020202;
+}
+
+/* Licht-Orbs */
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.orb1 {
+    width: 500px;
+    height: 500px;
+    left: -220px;
+    top: -220px;
+    background: rgba(255,255,255,.055);
+    animation: orbMove1 14s ease-in-out infinite alternate;
+}
+
+.orb2 {
+    width: 550px;
+    height: 550px;
+    right: -250px;
+    top: 25%;
+    background: rgba(255,255,255,.04);
+    animation: orbMove2 17s ease-in-out infinite alternate;
+}
+
+.orb3 {
+    width: 450px;
+    height: 450px;
+    left: 35%;
+    bottom: -250px;
+    background: rgba(150,150,150,.045);
+    animation: orbMove3 20s ease-in-out infinite alternate;
+}
+
+@keyframes orbMove1 {
+    0% {
+        transform: translate(0,0) scale(1);
+    }
+
+    100% {
+        transform: translate(280px,180px) scale(1.3);
+    }
+}
+
+@keyframes orbMove2 {
+    0% {
+        transform: translate(0,0);
+    }
+
+    100% {
+        transform: translate(-220px,100px);
+    }
+}
+
+@keyframes orbMove3 {
+    0% {
+        transform: translate(0,0);
+    }
+
+    100% {
+        transform: translate(100px,-120px) scale(1.25);
+    }
+}
+
+/* =========================================
+   ANIMIERTES GRID
+========================================= */
+
+.grid {
+    position: fixed;
+    inset: 0;
+    z-index: -15;
+
+    opacity: .16;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+
+    animation: gridMove 25s linear infinite;
+}
+
+@keyframes gridMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 70px 70px;
+    }
+}
+
+/* =========================================
+   LICHTSTRAHLEN
+========================================= */
+
+.beam {
+    position: fixed;
+
+    width: 120vw;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    z-index: -10;
+
+    pointer-events: none;
+}
+
+.beam1 {
+    top: 22%;
+    left: -20%;
+    transform: rotate(-18deg);
+    animation: beamMove1 11s linear infinite;
+}
+
+.beam2 {
+    top: 55%;
+    left: -30%;
+    transform: rotate(13deg);
+    animation: beamMove2 15s linear infinite;
+}
+
+.beam3 {
+    top: 78%;
+    left: -25%;
+    transform: rotate(-8deg);
+    animation: beamMove3 18s linear infinite;
+}
+
+@keyframes beamMove1 {
+    from {
+        transform: translateX(-30%) rotate(-18deg);
+    }
+
+    to {
+        transform: translateX(100%) rotate(-18deg);
+    }
+}
+
+@keyframes beamMove2 {
+    from {
+        transform: translateX(-30%) rotate(13deg);
+    }
+
+    to {
+        transform: translateX(100%) rotate(13deg);
+    }
+}
+
+@keyframes beamMove3 {
+    from {
+        transform: translateX(-30%) rotate(-8deg);
+    }
+
+    to {
+        transform: translateX(100%) rotate(-8deg);
+    }
+}
+
+/* =========================================
+   PARTIKEL
+========================================= */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: .3;
+
+    box-shadow: 0 0 10px white;
+
+    animation: particleMove linear infinite;
+}
+
+@keyframes particleMove {
+
+    0% {
+        transform:
+            translateY(110vh)
+            translateX(0)
+            scale(.5);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .35;
+    }
+
+    80% {
+        opacity: .25;
+    }
+
+    100% {
+        transform:
+            translateY(-10vh)
+            translateX(80px)
+            scale(1.4);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    position: relative;
+
+    text-align: center;
+
+    padding: 85px 20px 65px;
+}
+
+.header-line {
+    width: 120px;
+    height: 2px;
+
+    margin: 0 auto 28px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #fff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.7),
+        0 0 30px rgba(255,255,255,.25);
+}
+
+.title-small {
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    color: #707070;
+
+    font-weight: 800;
+
+    margin-bottom: 16px;
+
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(45px, 8vw, 90px);
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #d6d6d6 35%,
+            #6f6f6f 100%
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 40px rgba(255,255,255,.08);
+}
+
+h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #777,
+            #fff,
+            #999,
+            #fff
+        );
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: titleShine 5s linear infinite;
+}
+
+@keyframes titleShine {
+
+    from {
+        background-position: 300% center;
+    }
+
+    to {
+        background-position: -300% center;
+    }
+}
+
+.subtitle {
+    margin-top: 20px;
+
+    color: #777;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+.title-glow {
+    width: 220px;
+    height: 2px;
+
+    margin: 28px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.5),
+        0 0 35px rgba(255,255,255,.2);
+
+    animation: titleGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+
+    0%,100% {
+        opacity: .35;
+        transform: scaleX(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1.1);
+    }
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.container {
+    width: min(1250px, 92%);
+
+    margin: auto;
+
+    padding-bottom: 100px;
+}
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.category {
+    margin: 48px 0;
+}
+
+.category-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.category-title h2 {
+    font-size: 23px;
+
+    font-weight: 800;
+
+    letter-spacing: -.5px;
+}
+
+.category-line {
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.22),
+            transparent
+        );
+}
+
+/* =========================================
+   MEMBER CARDS
+========================================= */
+
+.members {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(215px, 1fr));
+
+    gap: 18px;
+}
+
+.member {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 155px;
+
+    padding: 24px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,25,25,.9),
+            rgba(8,8,8,.82)
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(20px);
+
+    transition:
+        transform .35s ease,
+        border .35s ease,
+        box-shadow .35s ease;
+}
+
+.member::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.08),
+            transparent 40%
+        );
+
+    opacity: 0;
+
+    transition: .35s;
+}
+
+.member::after {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    right: -70px;
+    bottom: -70px;
+
+    border-radius: 50%;
+
+    background: var(--rank-color);
+
+    opacity: .04;
+
+    filter: blur(20px);
+
+    transition: .35s;
+}
+
+.member:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--rank-color);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.65),
+        0 0 35px var(--rank-glow);
+}
+
+.member:hover::before {
+    opacity: 1;
+}
+
+.member:hover::after {
+    opacity: .12;
+}
+
+.member-name {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    margin-bottom: 9px;
+}
+
+.rank-dot {
+    display: inline-block;
+
+    width: 9px;
+    height: 9px;
+
+    margin-right: 9px;
+
+    border-radius: 50%;
+
+    background: var(--rank-color);
+
+    box-shadow:
+        0 0 8px var(--rank-color),
+        0 0 18px var(--rank-color);
+}
+
+.member-role {
+    position: relative;
+
+    z-index: 2;
+
+    color: var(--rank-color);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.7px;
+}
+
+.vote-button {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    margin-top: 19px;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+.vote-button:hover {
+
+    background: var(--rank-color);
+
+    border-color: var(--rank-color);
+
+    color: #050505;
+
+    box-shadow:
+        0 0 20px var(--rank-glow);
+}
+
+.vote-button.voted {
+
+    background: var(--rank-color);
+
+    border-color: var(--rank-color);
+
+    color: #050505;
+
+    box-shadow:
+        0 0 20px var(--rank-glow);
+}
+
+.votes {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 11px;
+
+    color: #666;
+
+    font-size: 11px;
+}
+
+/* =========================================
+   RANK COLORS
+========================================= */
+
+.supporter {
+    --rank-color: #39e878;
+    --rank-glow: rgba(57,232,120,.32);
+}
+
+.moderator {
+    --rank-color: #438cff;
+    --rank-glow: rgba(67,140,255,.32);
+}
+
+.analyst {
+    --rank-color: #777;
+    --rank-glow: rgba(150,150,150,.22);
+}
+
+.fraktion {
+    --rank-color: #6ddcff;
+    --rank-glow: rgba(109,220,255,.32);
+}
+
+.admin {
+    --rank-color: #ffd83d;
+    --rank-glow: rgba(255,216,61,.32);
+}
+
+.teamleitung {
+    --rank-color: #ff63cb;
+    --rank-glow: rgba(255,99,203,.32);
+}
+
+.projektleitung {
+    --rank-color: #ff4646;
+    --rank-glow: rgba(255,70,70,.32);
+}
+
+.projektinhaber {
+    --rank-color: #fff;
+    --rank-glow: rgba(255,255,255,.32);
+}
+
+/* =========================================
+   INFO BOX
+========================================= */
+
+.info {
+    position: relative;
+
+    margin-top: 80px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,25,25,.75),
+            rgba(5,5,5,.7)
+        );
+
+    backdrop-filter: blur(20px);
+
+    overflow: hidden;
+}
+
+.info::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: 50%;
+    top: -260px;
+
+    transform: translateX(-50%);
+
+    background: rgba(255,255,255,.08);
+
+    filter: blur(70px);
+
+    border-radius: 50%;
+}
+
+.info h3 {
+    position: relative;
+
+    font-size: 21px;
+
+    margin-bottom: 12px;
+}
+
+.info p {
+    position: relative;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #707070;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #444;
+
+    border-top:
+        1px solid rgba(255,255,255,.05);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    header {
+        padding-top: 55px;
+    }
+
+    h1 {
+        font-size: 45px;
+        letter-spacing: -3px;
+    }
+
+    .title-small {
+        letter-spacing: 3px;
+    }
+
+    .members {
+        grid-template-columns: 1fr;
+    }
+
+    .category-title h2 {
+        font-size: 20px;
+    }
+
+    .info {
+        padding: 27px 20px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================================
+     BACKGROUND
+========================================= -->
+
+<div class="background">
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+</div>
+
+<div class="grid"></div>
+
+<div class="beam beam1"></div>
+<div class="beam beam2"></div>
+<div class="beam beam3"></div>
+
+<div class="particles" id="particles"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="header-line"></div>
+
+    <div class="title-small">
+        WÖCHENTLICHE TEAMWAHL
+    </div>
+
+    <h1>
+        TEAM <span>ABSTIMMUNG</span>
+    </h1>
+
+    <div class="subtitle">
+        Wähle den herausragenden Teamler der Woche
+    </div>
+
+    <div class="title-glow"></div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================================
+     SUPPORTER
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>🟢 Supporter</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member supporter"
+             data-name="Damien"
+             data-role="Supporter">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Damien
+            </div>
+
+            <div class="member-role">
+                Supporter
+            </div>
+
+            <button class="vote-button">
+                Für Damien abstimmen
+            </button>
+
+            <div class="votes">
+                0 Stimmen
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MODERATOR
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>🔵 Moderator</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member moderator"
+             data-name="Nuri"
+             data-role="Moderator">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Nuri
+            </div>
+
+            <div class="member-role">Moderator</div>
+
+            <button class="vote-button">
+                Für Nuri abstimmen
+            </button>
+
+            <div class="votes">
+                0 Stimmen
+            </div>
+
+        </div>
+
+
+        <div class="member moderator"
+             data-name="Jiyo"
+             data-role="Moderator">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Jiyo
+            </div>
+
+            <div class="member-role">Moderator</div>
+
+            <button class="vote-button">
+                Für Jiyo abstimmen
+            </button>
+
+            <div class="votes">
+                0 Stimmen
+            </div>
+
+        </div>
+
+
+        <div class="member moderator"
+             data-name="Peter"
+             data-role="Moderator">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Peter
+            </div>
+
+            <div class="member-role">Moderator</div>
+
+            <button class="vote-button">
+                Für Peter abstimmen
+            </button>
+
+            <div class="votes">
+                0 Stimmen
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     ANALYST
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>⚫ Analyst</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member analyst"
+             data-name="Adrian"
+             data-role="Analyst">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Adrian
+            </div>
+
+            <div class="member-role">Analyst</div>
+
+            <button class="vote-button">
+                Für Adrian abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member analyst"
+             data-name="Jan"
+             data-role="Analyst">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Jan
+            </div>
+
+            <div class="member-role">Analyst</div>
+
+            <button class="vote-button">
+                Für Jan abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member analyst"
+             data-name="Reji"
+             data-role="Analyst">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Reji
+            </div>
+
+            <div class="member-role">Analyst</div>
+
+            <button class="vote-button">
+                Für Reji abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member analyst"
+             data-name="Rayk"
+             data-role="Analyst">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Rayk
+            </div>
+
+            <div class="member-role">Analyst</div>
+
+            <button class="vote-button">
+                Für Rayk abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member analyst"
+             data-name="RyanArafat"
+             data-role="Analyst">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                RyanArafat
+            </div>
+
+            <div class="member-role">Analyst</div>
+
+            <button class="vote-button">
+                Für RyanArafat abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FRAKTIONSVERWALTUNG
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>🔷 Fraktionsverwaltung</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member fraktion"
+             data-name="Amin"
+             data-role="Fraktionsverwaltung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Amin
+            </div>
+
+            <div class="member-role">
+                Fraktionsverwaltung
+            </div>
+
+            <button class="vote-button">
+                Für Amin abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member fraktion"
+             data-name="Damien"
+             data-role="Fraktionsverwaltung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Damien
+            </div>
+
+            <div class="member-role">
+                Fraktionsverwaltung
+            </div>
+
+            <button class="vote-button">
+                Für Damien abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member fraktion"
+             data-name="Kdot"
+             data-role="Fraktionsverwaltung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Kdot
+            </div>
+
+            <div class="member-role">
+                Fraktionsverwaltung
+            </div>
+
+            <button class="vote-button">
+                Für Kdot abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member fraktion"
+             data-name="Syroo"
+             data-role="Fraktionsverwaltung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Syroo
+            </div>
+
+            <div class="member-role">
+                Fraktionsverwaltung
+            </div>
+
+            <button class="vote-button">
+                Für Syroo abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member fraktion"
+             data-name="Hamed"
+             data-role="Fraktionsverwaltung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Hamed
+            </div>
+
+            <div class="member-role">
+                Fraktionsverwaltung
+            </div>
+
+            <button class="vote-button">
+                Für Hamed abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member fraktion"
+             data-name="Enso"
+             data-role="Fraktionsverwaltung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Enso
+            </div>
+
+            <div class="member-role">
+                Fraktionsverwaltung
+            </div>
+
+            <button class="vote-button">
+                Für Enso abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     ADMIN
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>🟡 Admin</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member admin"
+             data-name="Antonio"
+             data-role="Admin">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Antonio
+            </div>
+
+            <div class="member-role">Admin</div>
+
+            <button class="vote-button">
+                Für Antonio abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member admin"
+             data-name="Leon"
+             data-role="Admin">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Leon
+            </div>
+
+            <div class="member-role">Admin</div>
+
+            <button class="vote-button">
+                Für Leon abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member admin"
+             data-name="matron3"
+             data-role="Admin">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                matron3
+            </div>
+
+            <div class="member-role">Admin</div>
+
+            <button class="vote-button">
+                Für matron3 abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <!-- KURAA IST ADMIN -->
+
+        <div class="member admin"
+             data-name="Kuraa"
+             data-role="Admin">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Kuraa
+            </div>
+
+            <div class="member-role">Admin</div>
+
+            <button class="vote-button">
+                Für Kuraa abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     TEAMLEITUNG
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>🩷 Teamleitung</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <!-- NUR 3M!L -->
+
+        <div class="member teamleitung"
+             data-name="3M!L"
+             data-role="Teamleitung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                3M!L
+            </div>
+
+            <div class="member-role">
+                Teamleitung
+            </div>
+
+            <button class="vote-button">
+                Für 3M!L abstimmen
+            </button>
+
+            <div class="votes">
+                0 Stimmen
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     PROJEKTLEITUNG
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>🔴 Projektleitung</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member projektleitung"
+             data-name="Hamed"
+             data-role="Projektleitung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Hamed
+            </div>
+
+            <div class="member-role">
+                Projektleitung
+            </div>
+
+            <button class="vote-button">
+                Für Hamed abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektleitung"
+             data-name="Enso"
+             data-role="Projektleitung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Enso
+            </div>
+
+            <div class="member-role">
+                Projektleitung
+            </div>
+
+            <button class="vote-button">
+                Für Enso abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektleitung"
+             data-name="Loco"
+             data-role="Projektleitung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Loco
+            </div>
+
+            <div class="member-role">
+                Projektleitung
+            </div>
+
+            <button class="vote-button">
+                Für Loco abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektleitung"
+             data-name="Sonic"
+             data-role="Projektleitung">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Sonic
+            </div>
+
+            <div class="member-role">
+                Projektleitung
+            </div>
+
+            <button class="vote-button">
+                Für Sonic abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     PROJEKTINHABER
+========================================= -->
+
+<section class="category">
+
+    <div class="category-title">
+        <h2>⚪ Projektinhaber</h2>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="members">
+
+        <div class="member projektinhaber"
+             data-name="Benjamin"
+             data-role="Projektinhaber">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Benjamin
+            </div>
+
+            <div class="member-role">
+                Projektinhaber
+            </div>
+
+            <button class="vote-button">
+                Für Benjamin abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektinhaber"
+             data-name="Kdot"
+             data-role="Projektinhaber">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Kdot
+            </div>
+
+            <div class="member-role">
+                Projektinhaber
+            </div>
+
+            <button class="vote-button">
+                Für Kdot abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektinhaber"
+             data-name="eddx"
+             data-role="Projektinhaber">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                eddx
+            </div>
+
+            <div class="member-role">
+                Projektinhaber
+            </div>
+
+            <button class="vote-button">
+                Für eddx abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektinhaber"
+             data-name="Kuna"
+             data-role="Projektinhaber">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Kuna 👑
+            </div>
+
+            <div class="member-role">
+                Projektinhaber
+            </div>
+
+            <button class="vote-button">
+                Für Kuna abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+
+        <div class="member projektinhaber"
+             data-name="Rave"
+             data-role="Projektinhaber">
+
+            <div class="member-name">
+                <span class="rank-dot"></span>
+                Rave 👑
+            </div>
+
+            <div class="member-role">
+                Projektinhaber
+            </div>
+
+            <button class="vote-button">
+                Für Rave abstimmen
+            </button>
+
+            <div class="votes">0 Stimmen</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     INFO
+========================================= -->
+
+<div class="info">
+
+    <h3>
+        🏆 Bester Teamler der Woche
+    </h3>
+
+    <p>
+        Stimme in jedem Bereich genau einmal
+        für deinen Favoriten ab.
+        Deine Auswahl wird auf diesem Gerät gespeichert.
+    </p>
+
+</div>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+    TEAM ABSTIMMUNG • WÖCHENTLICHE TEAMWAHL
+</footer>
+
+
+<script>
+
+/* =========================================
+   PARTIKEL GENERIEREN
+========================================= */
+
+const particleContainer =
+    document.getElementById("particles");
+
+for (let i = 0; i < 90; i++) {
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (8 + Math.random() * 18) + "s";
+
+    particle.style.animationDelay =
+        (-Math.random() * 20) + "s";
+
+    const size =
+        1 + Math.random() * 3;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+    particleContainer.appendChild(
+        particle
+    );
+}
+
+
+/* =========================================
+   VOTING SYSTEM
+========================================= */
+
+const members =
+    document.querySelectorAll(".member");
+
+
+members.forEach(member => {
+
+    const button =
+        member.querySelector(".vote-button");
+
+    const voteText =
+        member.querySelector(".votes");
+
+    const name =
+        member.dataset.name;
+
+    const role =
+        member.dataset.role;
+
+
+    const voteKey =
+        "votes_" +
+        role +
+        "_" +
+        name;
+
+    const selectedKey =
+        "selected_" +
+        role;
+
+
+    /* Stimmen laden */
+
+    let votes =
+        Number(
+            localStorage.getItem(voteKey)
+        ) || 0;
+
+
+    function updateVotes() {
+
+        voteText.textContent =
+            votes +
+            (
+                votes === 1
+                    ? " Stimme"
+                    : " Stimmen"
+            );
+    }
+
+
+    updateVotes();
+
+
+    /* Prüfen ob bereits abgestimmt */
+
+    const selected =
+        localStorage.getItem(
+            selectedKey
+        );
+
+
+    if (selected === name) {
+
+        button.classList.add(
+            "voted"
+        );
+
+        button.textContent =
+            "✓ Deine Stimme";
+    }
+
+
+    /* Abstimmung */
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const alreadySelected =
+                localStorage.getItem(
+                    selectedKey
+                );
+
+
+            /* Bereits abgestimmt */
+
+            if (alreadySelected) {
+
+                if (
+                    alreadySelected ===
+                    name
+                ) {
+
+                    alert(
+                        "Du hast bereits für diese Person abgestimmt."
+                    );
+
+                } else {
+
+                    alert(
+                        "Du hast in diesem Bereich bereits abgestimmt."
+                    );
+
+                }
+
+                return;
+            }
+
+
+            /* Stimme hinzufügen */
+
+            votes++;
+
+
+            localStorage.setItem(
+                voteKey,
+                votes
+            );
+
+
+            localStorage.setItem(
+                selectedKey,
+                name
+            );
+
+
+            updateVotes();
+
+
+            button.classList.add(
+                "voted"
+            );
+
+
+            button.textContent =
+                "✓ Deine Stimme";
+
+
+            /* Andere Personen
+               in diesem Bereich sperren */
+
+            const category =
+                member.closest(
+                    ".category"
+                );
+
+
+            category
+                .querySelectorAll(
+                    ".vote-button"
+                )
+                .forEach(
+                    otherButton => {
+
+                        if (
+                            otherButton !==
+                            button
+                        ) {
+
+                            otherButton.disabled =
+                                true;
+
+                            otherButton.style.opacity =
+                                ".35";
+
+                            otherButton.style.cursor =
+                                "not-allowed";
+                        }
+
+                    }
+                );
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   BEREITS ABGESTIMMTE BEREICHE
+========================================= */
+
+document
+    .querySelectorAll(".category")
+    .forEach(category => {
+
+        const voted =
+            category.querySelector(
+                ".vote-button.voted"
+            );
+
+
+        if (voted) {
+
+            category
+                .querySelectorAll(
+                    ".vote-button"
+                )
+                .forEach(
+                    button => {
+
+                        if (
+                            !button.classList
+                                .contains("voted")
+                        ) {
+
+                            button.disabled =
+                                true;
+
+                            button.style.opacity =
+                                ".35";
+
+                            button.style.cursor =
+                                "not-allowed";
+                        }
+
+                    }
+                );
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
+```
