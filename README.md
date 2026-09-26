@@ -165,21 +165,11 @@
       <div class="members">
 
         <div class="member">
-          <div class="member-name">Testname</div>
+          <div class="member-name">Damien</div>
           <div class="votes">
             Stimmen: <span id="supporter-1">0</span>
           </div>
           <button onclick="vote('supporter', 'supporter-1')">
-            ABSTIMMEN
-          </button>
-        </div>
-
-        <div class="member">
-          <div class="member-name">Testnamee</div>
-          <div class="votes">
-            Stimmen: <span id="supporter-2">0</span>
-          </div>
-          <button onclick="vote('supporter', 'supporter-2')">
             ABSTIMMEN
           </button>
         </div>
@@ -198,7 +188,7 @@
       <div class="members">
 
         <div class="member">
-          <div class="member-name">ModTest</div>
+          <div class="member-name">Nuri</div>
           <div class="votes">
             Stimmen: <span id="moderator-1">0</span>
           </div>
@@ -208,7 +198,7 @@
         </div>
 
         <div class="member">
-          <div class="member-name">ModTest2</div>
+          <div class="member-name">Jiyo</div>
           <div class="votes">
             Stimmen: <span id="moderator-2">0</span>
           </div>
@@ -218,6 +208,29 @@
         </div>
 
       </div>
+
+          <div class="member">
+          <div class="member-name">Peter</div>
+          <div class="votes">
+            Stimmen: <span id="moderator-3">0</span>
+          </div>
+          <button onclick="vote('moderator', 'moderator-3')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+            <div class="member">
+          <div class="member-name">xyc</div>
+          <div class="votes">
+            Stimmen: <span id="moderator-4">0</span>
+          </div>
+          <button onclick="vote('moderator', 'moderator-4')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+      </div>
+    
     </section>
 
 
@@ -231,7 +244,7 @@
       <div class="members">
 
         <div class="member">
-          <div class="member-name">AnalystTest</div>
+          <div class="member-name">Adrian</div>
           <div class="votes">
             Stimmen: <span id="analyst-1">0</span>
           </div>
@@ -240,8 +253,8 @@
           </button>
         </div>
 
-        <div class="member">
-          <div class="member-name">AnalystTest2</div>
+            <div class="member">
+          <div class="member-name">Jan</div>
           <div class="votes">
             Stimmen: <span id="analyst-2">0</span>
           </div>
@@ -250,8 +263,110 @@
           </button>
         </div>
 
+            <div class="member">
+          <div class="member-name">reji</div>
+          <div class="votes">
+            Stimmen: <span id="analyst-3">0</span>
+          </div>
+          <button onclick="vote('analyst', 'analyst-3')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+        <div class="member">
+          <div class="member-name">rayk</div>
+          <div class="votes">
+            Stimmen: <span id="analyst-4">0</span>
+          </div>
+          <button onclick="vote('analyst', 'analyst-4')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+            <div class="member">
+          <div class="member-name">Ryan Afrat</div>
+          <div class="votes">
+            Stimmen: <span id="analyst-5">0</span>
+          </div>
+          <button onclick="vote('analyst', 'analyst-5')">
+            ABSTIMMEN
+          </button>
+        </div>
+
       </div>
     </section>
+
+
+     <!-- ADMIN -->
+    <section class="category">
+      <h2>🛡️ Bester ADMIN</h2>
+      <p class="category-description">
+        Wähle deinen besten ADMIN.
+      </p>
+
+      <div class="members">
+
+      <div class="members">
+
+                <div class="member">
+          <div class="member-name">Antonio</div>
+          <div class="votes">
+            Stimmen: <span id="ADMIN-1">0</span>
+          </div>
+          <button onclick="vote('ADMIN', 'ADMIN-1')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+                   <div class="member">
+          <div class="member-name">Isa</div>
+          <div class="votes">
+            Stimmen: <span id="ADMIN-2">0</span>
+          </div>
+          <button onclick="vote('ADMIN', 'ADMIN-2')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+                   <div class="member">
+          <div class="member-name">Leon</div>
+          <div class="votes">
+            Stimmen: <span id="ADMIN-3">0</span>
+          </div>
+          <button onclick="vote('ADMIN', 'ADMIN-3')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+                   <div class="member">
+          <div class="member-name">Matron3</div>
+          <div class="votes">
+            Stimmen: <span id="ADMIN-4">0</span>
+          </div>
+          <button onclick="vote('ADMIN', 'ADMIN-4')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+                   <div class="member">
+          <div class="member-name">Akuza</div>
+          <div class="votes">
+            Stimmen: <span id="ADMIN-5">0</span>
+          </div>
+          <button onclick="vote('ADMIN', 'ADMIN-5')">
+            ABSTIMMEN
+          </button>
+        </div>
+
+                   <div class="member">
+          <div class="member-name">Kuraa</div>
+          <div class="votes">
+            Stimmen: <span id="ADMIN-6">0</span>
+          </div>
+          <button onclick="vote('ADMIN', 'ADMIN-6')">
+            ABSTIMMEN
+          </button>
+        </div>
 
     <div class="notice">
       Du kannst pro Kategorie nur einmal abstimmen.
